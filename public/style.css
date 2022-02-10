@@ -128,6 +128,68 @@ ABOUT
 }
 
 /*---------------------
+COURSE
+---------------------*/
+.course {
+	text-align: center;
+	margin-top: 64px;
+	margin-bottom: 64px;
+}
+
+.course h3 {
+	color: #ffb61a;
+	font-size: 24px;
+	padding-bottom: 40px;
+}
+
+.course p {
+	margin-top: 24px;
+	margin-bottom: 64px;
+	font-size: 20px;
+}
+
+.flex-item {
+	display: flex;
+	justify-content: space-between;
+	font-size: 20px;
+}
+
+.flex-item:nth-child(even) {
+	flex-direction: row-reverse;
+}
+
+.flex-item__img {
+	width: 50%;
+	justify-content: center;
+	align-items: center;
+}
+
+.flex-item__img img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.flex-item__txt {
+	width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	font-size: 20px;
+}
+
+.flex-item__txt h2 {
+	font-size: 24px;
+	margin-bottom: 40px;
+}
+
+.flex-item__txt p {
+	line-height: 1.5;
+	font-size: 20px;
+}
+
+/*---------------------
 登録フォーム
 ---------------------*/
 
@@ -138,6 +200,7 @@ h2 {
 	color: #ffb61a;;
 	text-shadow: 0 0 0.2em rgba(0, 0, 0, 1);
 	margin-bottom: 50px;
+	margin-top: 60px;
 }
 
 label {
@@ -185,4 +248,17 @@ a {
 	color: #ffb61a;
 	text-shadow: 0 0 0.2em rgba(0, 0, 0, 1);
 	margin-bottom: 50px;
+}
+
+/*---------------------
+フッター
+---------------------*/
+footer {
+	text-align: center;
+}
+
+footer p {
+	color: #fff;
+	padding: 32px 0;
+	font-size: 18px;
 }

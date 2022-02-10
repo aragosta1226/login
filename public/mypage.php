@@ -33,5 +33,11 @@ $login_user = $_SESSION["login_user"];
         <input class="btn" type="submit" name="logout" value="ログアウト">
     </form>
     <!-- <a href="./login.php">ログアウト</a> -->
+    <!-----------------------------------------------------------------------------
+    * フッター
+    ------------------------------------------------------------------------------>
+    <footer>
+        <p><small>2022 G's FUKUOKA DEV10-06</small></p>
+    </footer>
 </body>
 </html>
