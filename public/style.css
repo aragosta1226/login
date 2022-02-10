@@ -118,25 +118,11 @@ header {
 
 .header_nav_lists {
 	display: flex;
-	list-style: none;
 }
 
 .nav_link {
 	font-size: 18px;
 }
-
-.menu_line {
-	background: #4a4a4a;
-	border-radius: 5px;
-	width: 100%;
-	height: 5px;
-	margin: 4px 0;
-}
-
-/* .menu_active {
-	right: 0;
-} */
-
 
 /*---------------------
 ABOUT
