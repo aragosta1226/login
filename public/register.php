@@ -6,12 +6,16 @@ require_once '../classes/UserLogic.php';
 //エラーメッセージ
 $err = [];
 
-// //二重アクセスの対策
-// $token = filter_input(INPUT_POST, "csrf_token");
-// // トークンがない、もしくは一致しない場合、処理を中止
-// if(!isset($_SESSION["csrf_token"]) || $token !== $_SESSION["csrf_token"]) {
-//     exit("不正なリクエスト");//再読み込みしても出る
-// }
+// var_dump($_POST);
+// exit();
+
+//二重アクセスの対策
+$token = filter_input(INPUT_POST, "csrf_token");
+// トークンがない、もしくは一致しない場合、処理を中止
+// if(!isset($_SESSION["csrf_token"])|| $token !== $_SESSION["csrf_token"]) 
+if(!isset($_SESSION["csrf_token"])){
+    exit("不正なリクエスト");//再読み込みしても出る
+}
 
 unset($_SESSION["csrf_token"]);
 
@@ -33,7 +37,7 @@ if($password !== $password_conf) {
 }
 
 if(count($err) === 0) {
-    //ユーザーを登録する処理
+    //ユーザーを登録する処理ロジックの処理を取ってくる
     $hasCreated = UserLogic::createUser($_POST);
 
     if(!$hasCreated) {
@@ -49,7 +53,7 @@ if(count($err) === 0) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>ユーザー登録完了画面</title>
 </head>
 <body>
@@ -60,15 +64,15 @@ if(count($err) === 0) {
     <?php else : ?>
      <p>ユーザー登録が完了しました。</p>
     <?php endif ?>
-    <a href="./signup_form.php">戻る</a>
+    <a href="./login_form.php">ログイン</a>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
-        <p><small>2022 G's FUKUOKA DEV10-06</small></p>
+        <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
     <audio loop="loop" autoplay="autoplay" > 
-        <source type="audio/mpeg" src="Joel Corry x MNEK - Head & Heart.mp3">
+        <source type="audio/mpeg" src="./music/LOOSE YOURSELF.mp3">
     </audio>
 </body>
 </html>

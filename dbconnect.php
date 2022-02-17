@@ -10,6 +10,7 @@ function connect() {
 
     $dsn  = "mysql:host=$host; dbname=$db; charset=utf8mb4";
     
+    //エラーを検知するためにtry.catchで囲む
     try {
         $pdo = new PDO($dsn, $user, $pass, [
             //エラーのモードを決める

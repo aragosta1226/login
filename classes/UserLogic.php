@@ -30,6 +30,7 @@ class UserLogic {
             return $result;
         }
     }
+    
     /** 
      * ログイン処理
      * @param string $email
@@ -43,7 +44,7 @@ class UserLogic {
         $user = self::getUserByEmail($email);
 
         if(!$user) {
-            $_SESSION["msg"] = "emailが一致しません。";
+            $_SESSION["msg"] = "emailかパスワードが一致しません。";
             return $result;
         }
 
@@ -58,7 +59,7 @@ class UserLogic {
             $result = true;
             return $result;
         }
-        $_SESSION["msg"] = "パスワードが一致しません。";
+        $_SESSION["msg"] = "emailかパスワードが一致しません。";
         return $result;
     }
     /** 
@@ -110,4 +111,97 @@ class UserLogic {
         $_SESSION = array();
         session_destroy();
     }
+
+    /** 
+     * ユーザーを編集する
+     * @param array $userData
+     * @return bool $result
+    */
+    public static function editUser() {
+
+        $result = false;
+
+        $sql = 'SELECT * FROM todo_table WHERE id=id';
+        // $stmt = connect() -> prepare($sql);
+
+        try {
+            $stmt = connect() -> prepare($sql);
+            $stmt->execute();
+            $result = $stmt -> fetch(PDO::FETCH_ASSOC);
+            return $result;
+        // $status = $stmt->execute();
+        // var_dump($result);
+        // exit();
+        } catch (PDOException $e) {
+        echo json_encode(["sql error" => "{$e->getMessage()}"]);
+        exit();
+        }
+    }
+    /** 
+     * 編集したユーザーを登録する
+     * @param array $userData
+     * @return bool $result
+    */
+    public static function updateUser() {
+
+        $result = false;
+
+        $sql = 'UPDATE todo_table SET name=:name, email=:email, 
+        password=:password WHERE id=:id';
+
+        if (
+            !isset($_POST['name']) || $_POST['name'] == '' ||
+            !isset($_POST['email']) || $_POST['email'] == '' ||
+            !isset($_POST['password']) || $_POST['password'] == ''||
+            !isset($_POST['id']) || $_POST['id'] == '' 
+        ) {
+            exit('paramError');
+        }
+        
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        //再登録したパスワードもhash化する
+        $password = password_hash($userData['password'],PASSWORD_DEFAULT);
+        $id = $_POST['id'];
+        // var_dump($id);
+        // exit();
+
+        $stmt = connect() -> prepare($sql);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+
+        try {
+        $stmt -> execute();
+        // return $result; 
+        } catch (PDOException $e) {
+        echo json_encode(["sql error" => "{$e->getMessage()}"]);
+        exit();
+        }
+    }
+
+    /** 
+     * ユーザーを削除する
+     * @param array $userData
+     * @return bool $result
+    */
+    public static function deleteUser() {
+        $result = false;
+        $sql = 'DELETE FROM todo_table WHERE id=:id';
+        // var_dump($_POST);
+        // exit();
+        $id = $_POST['id'];
+
+        $stmt = connect() -> prepare($sql);
+        $stmt->bindValue(':id', $id, PDO::PARAM_STR);
+
+        try {
+        $stmt->execute();
+        } catch (PDOException $e) {
+        echo json_encode(["sql error" => "{$e->getMessage()}"]);
+        exit();
+        }
+    }
+
 }

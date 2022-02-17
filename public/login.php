@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once '../classes/UserLogic.php';
 
 //エラーメッセージ
@@ -37,7 +36,7 @@ if(!$result) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <title>ログイン完了</title>
 </head>
 <body>
@@ -48,10 +47,10 @@ if(!$result) {
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
-        <p><small>2022 G's FUKUOKA DEV10-06</small></p>
+        <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
     <audio loop="loop" autoplay="autoplay" > 
-        <source type="audio/mpeg" src="Joel Corry x MNEK - Head & Heart.mp3">
+        <source type="audio/mpeg" src="./music/LOOSE YOURSELF.mp3">
     </audio>
 </body>
 </html>
