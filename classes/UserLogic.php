@@ -13,14 +13,14 @@ class UserLogic {
 
         $result = false;
 
-        $sql = 'INSERT INTO todo_table (image, name, email, genre, profile, URL,
-        password) VALUES (?, ?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO todo_table (name, email, genre, profile, URL,
+        password) VALUES (?, ?, ?, ?, ?, ?)';
 
         // $file = $_FILES["image"];
 
         //ユーザーデータを配列に入れる
         $arr = [];
-        $arr[] = $userData['image'];
+        // $arr[] = $userData['image'];
         $arr[] = $userData['username'];
         $arr[] = $userData['email'];
         $arr[] = $userData['genre'];

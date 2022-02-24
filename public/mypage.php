@@ -47,6 +47,7 @@ $login_user = $_SESSION["login_user"];
     <form action="logout.php" method="POST">
         <input class="btn" type="submit" name="logout" value="ログアウト">
     </form>
+    <a href="signup_form.php">TOP</a>
     <!-- <a href="./login.php">ログアウト</a> -->
     <!-----------------------------------------------------------------------------
     * フッター

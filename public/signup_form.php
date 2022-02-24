@@ -123,11 +123,11 @@ unset($_SESSION["login_err"]);
         <p><?php echo $login_err; ?></p>
     <?php endif; ?>
     <form action="register.php" method="POST">
-        <div class="file-up">
+        <!-- <div class="file-up">
             <label for="image">アーティスト写真：</label>
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
             <input type="file" name="image" accept="image/*">
-        </div>
+        </div> -->
         <p>
             <label for="username">ユーザー名：</label>
             <input class="mado" type="text" name="username">
@@ -169,7 +169,7 @@ unset($_SESSION["login_err"]);
     </form>
     <a class="link" href="login_form.php">ログイン</a><br>
     <a class="link" href="user_list.php">DJリスト</a><br>
-    <a class="link" href="shop_list.php">店舗リスト</a><br>
+    <a class="link" href="shop_list.php">店舗リスト</a>
 
     <!-----------------------------------------------------------------------------
     * フッター

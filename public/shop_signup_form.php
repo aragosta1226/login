@@ -7,7 +7,7 @@ require_once "../classes/UserLogic.php";
 //ロジックの処理を取ってくる
 $result = UserLogic::checkLogin();
 if($result) {
-    header("Location: shopmypage2.php");
+    header("Location: shopmypage.php");
     return;
 }
 
