@@ -51,8 +51,9 @@ session_destroy();
             <input class="btn" type="submit" value="ログイン">
         </p>
     </form>
-    <a href="shop_list.php">店舗一覧はこちら</a>
-    <a href="shop_signup_form.php">新規登録はこちら</a>
+    <a href="shop_list.php">店舗リスト</a><br>
+    <a href="shop_signup_form.php">店舗新規登録</a><br>
+    <a href="signup_form.php">TOP</a>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>

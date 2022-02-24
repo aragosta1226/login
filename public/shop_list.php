@@ -44,9 +44,10 @@ foreach ($result as $record) {
             <?= $output ?>
         </tbody>
     </table>
-    <a href="shop_signup_form.php">新規登録する</a>
-    <a href="signup_form.php">DJとして新規登録する</a>
-    <a class="link" href="user_list.php">DJ一覧</a>
+    <a href="shop_signup_form.php">店舗新規登録！</a><br>
+    <a href="signup_form.php">DJ新規登録！</a><br>
+    <a class="link" href="user_list.php">DJリスト</a><br>
+    <a href="signup_form.php">TOP</a>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>

@@ -167,9 +167,10 @@ unset($_SESSION["login_err"]);
             <input class="btn" type="submit" value="新規登録">
         </p>
     </form>
-    <a class="link" href="login_form.php">ログインする</a>
-    <a class="link" href="user_list.php">DJ一覧</a>
-    <a class="link" href="shop_list.php">店舗一覧</a>
+    <a class="link" href="login_form.php">ログイン</a><br>
+    <a class="link" href="user_list.php">DJリスト</a><br>
+    <a class="link" href="shop_list.php">店舗リスト</a><br>
+
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>

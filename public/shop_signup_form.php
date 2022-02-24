@@ -7,7 +7,7 @@ require_once "../classes/UserLogic.php";
 //ロジックの処理を取ってくる
 $result = UserLogic::checkLogin();
 if($result) {
-    header("Location: mypage2.php");
+    header("Location: shopmypage2.php");
     return;
 }
 
@@ -160,9 +160,9 @@ unset($_SESSION["login_err"]);
             <input class="btn" type="submit" value="新規登録">
         </p>
     </form>
-    <a href="login_form2.php">ログインする</a>
-    <a href="shop_list.php">店舗一覧はこちら</a>
-    <a href="user_list.php">DJ一覧</a>
+    <a href="login_form2.php">ログイン</a><br>
+    <a href="shop_list.php">店舗リスト</a><br>
+    <a href="user_list.php">DJリスト</a><br>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>

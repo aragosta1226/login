@@ -24,7 +24,7 @@ $login_user = $_SESSION["login_user"];
       <input type="hidden" name="id" value="<?= $login_user["id"] ?>">
         <button class="btn">削除</button>
     </form>
-    <a href="./shop_signup_form.php">トップページへ</a>
+    <a href="./shop_signup_form.php">TOP</a>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>
