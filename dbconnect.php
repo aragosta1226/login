@@ -9,7 +9,7 @@ function connect() {
     $pass = DB_PASS;
 
     $dsn  = "mysql:host=$host; dbname=$db; charset=utf8mb4";
-    
+
     //エラーを検知するためにtry.catchで囲む
     try {
         $pdo = new PDO($dsn, $user, $pass, [
@@ -23,7 +23,7 @@ function connect() {
     } catch (PDOExeption $e) {
         echo "接続失敗です！". $e -> getMessage();
         exit();
-    } 
+    }
 }
 
 // echo connect();

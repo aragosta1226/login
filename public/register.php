@@ -12,7 +12,7 @@ $err = [];
 //二重アクセスの対策
 $token = filter_input(INPUT_POST, "csrf_token");
 // トークンがない、もしくは一致しない場合、処理を中止
-// if(!isset($_SESSION["csrf_token"])|| $token !== $_SESSION["csrf_token"]) 
+// if(!isset($_SESSION["csrf_token"])|| $token !== $_SESSION["csrf_token"])
 if(!isset($_SESSION["csrf_token"])){
     exit("不正なリクエスト");//再読み込みしても出る
 }
@@ -25,6 +25,15 @@ if(!$username = filter_input(INPUT_POST, 'username')) {
 }
 if(!$email = filter_input(INPUT_POST, 'email')) {
     $err[] = "メールアドレスを記入してください。";
+}
+if(!$genre = filter_input(INPUT_POST, 'genre')) {
+    $err[] = "ジャンルを選択してください。";
+}
+if(!$profile = filter_input(INPUT_POST, 'profile')) {
+    $err[] = "プロフィールを記入してください。";
+}
+if(!$soundcloud = filter_input(INPUT_POST, 'soundcloud')) {
+    $err[] = "URLを記入してください。";
 }
 $password = filter_input(INPUT_POST, 'password');
 //正規表現
@@ -42,6 +51,8 @@ if(count($err) === 0) {
 
     if(!$hasCreated) {
         $err[] = "登録に失敗しました";
+        // header("Location: signup_form.php");
+        // return;
     }
 }
 
@@ -71,8 +82,8 @@ if(count($err) === 0) {
     <footer>
         <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
-    <audio loop="loop" autoplay="autoplay" > 
+    <!-- <audio loop="loop" autoplay="autoplay" >
         <source type="audio/mpeg" src="./music/LOOSE YOURSELF.mp3">
-    </audio>
+    </audio> -->
 </body>
 </html>

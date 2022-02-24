@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 require_once "../functions.php";
 require_once "../classes/UserLogic.php";
 
@@ -30,9 +29,24 @@ unset($_SESSION["login_err"]);
     ------------------------------------------------------------------------------>
     <div class="mainvisual">
         <img src="./images/top.png" width="100%" height="100%" alt="DJアカデミーのイメージ">
-        <h1 class="main_title">セカイを変えるDJになろう</h1>
-        <div class="text1">DJ養成学校「DJアカデミーFUKUOKA」</div>
-    </div> 
+        <h1 class="main_title">DJ HUB</h1>
+        <div class="text1">セカイを変えるDJになろう</div>
+    </div>
+    <!-----------------------------------------------------------------------------
+    * ヘッダー
+    ------------------------------------------------------------------------------>
+    <header>
+        <div class="header_contents">
+            <nav class="header_nav">
+                <ul class="header_nav_lists">
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#course">COURSE</a></li>
+                    <li><a href="#form">JOIN</a></li>
+                    <li><a href="user_list.php">DJを呼びたい方はこちら</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
     <!-----------------------------------------------------------------------------
     * スライドショー
     ------------------------------------------------------------------------------>
@@ -54,33 +68,18 @@ unset($_SESSION["login_err"]);
             <li class="content content-hover"><img src="./images/armin.jpeg" alt="アーミン"></li>
             <li class="content content-hover"><img src="./images/hardwell.jpeg" alt="ハードウェル"></li>
             <li class="content content-hover"><img src="./images/avicii.jpeg" alt="アヴィーチー"></li>
-        </ul>   
+        </ul>
     </div>
-    <!-----------------------------------------------------------------------------
-    * ヘッダー
-    ------------------------------------------------------------------------------>
-    <header>
-        <div class="header_contents">
-            <nav class="header_nav">
-                <ul class="header_nav_lists">
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#course">COURSE</a></li>
-                    <li><a href="#form">JOIN</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
     <!-----------------------------------------------------------------------------
     * ABOUT
     ------------------------------------------------------------------------------>
     <section class="about" id="about">
         <div class="inner">
             <h3>ABOUT</h3>
-            <p class="example1">DJアカデミーについて</p>
-            <p class="example2">DJアカデミーは、DJ養成学校です。<p>
+            <p class="example1">DJ HUBについて</p>
+            <p class="example2">DJ HUBは、DJとお店のマッチングサービスです。<p>
             <p class="example3">DJの素晴らしさを、現場を通じて、できるだけ多くの人に知っていただきたい。<br>そして、どの時代にもいつもダンスホールがあった、あの頃の当たり前をこの手で取り戻したい。</p>
-            <p class="example4">そんな思いから、DJ養成学校「DJアカデミーFUKUOKA」は歩みを始めています。</p>
-            <p class="example5">卒業後、現場獲得のバックアップはもちろんのこと、<br>Clubへの就職・転職もサポートします。</p>
+            <p class="example4">そんな思いから、DJ HUBは歩みを始めています。</p>
         </div>
     </section>
     <!-----------------------------------------------------------------------------
@@ -89,7 +88,7 @@ unset($_SESSION["login_err"]);
     <section class="course" id="course">
         <div class="inner">
             <h3>COURSE</h3>
-            <p>未経験からでもスタートができるよう、カリキュラムは多くの専門家や<br>現役DJのアドバイスのもと、作られました。
+            <p>未経験からでもスタートができるよう、初回に限り５回まで<br>DJを無料にて呼べるサービスあり。
             </p>
         </div>
     </section>
@@ -97,22 +96,22 @@ unset($_SESSION["login_err"]);
         <div class="flex-item">
             <div class="flex-item__img"><img src="./images/kenshuu.jpeg" alt="実地研修"></div>
             <div class="flex-item__txt">
-                <h2>本格的な大型CLUBを使った実地研修</h2>
-                <p>DJアカデミーでは、本格的なCLUBを使った実地研修を<br>行うことができます。プロとして活躍するDJも<br>PLAYするような、大型CLUBで機材環境も整ったDJブースを余すところ<br>なく使い、卒業時には本格的なムーブメントを自分の力で作れる<br>実践力の養成を目指します。</p>
+                <h2>しっかりとプロが審査したDJのみエントリー出来る</h2>
+                <p>DJ HUBでは、しっかりとプロがmixをヒアリングし、<br>現場に出れるレベルなのかどうかを<br>安心してオファー頂く為に審査いたします。</p>
             </div>
         </div>
         <div class="flex-item">
-            <div class="flex-item__img"><img src="./images/koushuu.jpeg" alt="講習"></div>
+            <div class="flex-item__img"><img src="./images/livestreaming.png" alt="講習"></div>
             <div class="flex-item__txt">
-                <h2>必要な知識もしっかりと取得</h2>
-                <p>トラックリスト作りには、しっかりとした音楽に関する知識が<br>欠かせません。DJアカデミーでは、一流講師陣による、<br>トラックリスト作りに必要ないろはを余すところなく学べます。<br>DJそのものでなく、ムーブメントを起こす心理学全般を学ぶことも<br>可能ですので、DJ以外への展開も夢ではないでしょう。</p>
+                <h2>ライブ配信にも</h2>
+                <p>最近ではライブ配信でDJ同士で繋がる事も増えてきました。<br>一緒に配信して欲しい等々<br>活用方法は無限大です。</p>
             </div>
         </div>
         <div class="flex-item">
-            <div class="flex-item__img"><img src="./images/sotsusei.jpeg" alt="リスニング"></div>
+            <div class="flex-item__img"><img src="./images/ranking.jpg" alt="リスニング"></div>
             <div class="flex-item__txt">
-                <h2>卒業制作はリスニング審査あり</h2>
-                <p>DJアカデミーでは最後の2ヶ月間で卒業制作を実施。<br>卒業制作として、外さないトラックリスト作りを実際に行います。卒業後、<br>一般クラバー参加によるリスニング審査があるため、作り手の<br>目線だけでなく、観客の目線から、卒業制作作品としての<br>DJ PLAYを、しっかりと評価いただくことができます。</p>
+                <h2>ランキングにてホットなDJを紹介</h2>
+                <p>DJ HUBでは週に一回ランキング更新を実施。<br>今一番売れてるDJが分かります。<br>推しのDJを見つけていただくことができます。</p>
             </div>
         </div>
     </div>
@@ -124,6 +123,11 @@ unset($_SESSION["login_err"]);
         <p><?php echo $login_err; ?></p>
     <?php endif; ?>
     <form action="register.php" method="POST">
+        <div class="file-up">
+            <label for="image">アーティスト写真：</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
+            <input type="file" name="image" accept="image/*">
+        </div>
         <p>
             <label for="username">ユーザー名：</label>
             <input class="mado" type="text" name="username">
@@ -131,6 +135,24 @@ unset($_SESSION["login_err"]);
         <p>
             <label for="email">メールアドレス：</label>
             <input class="mado" type="email" name="email">
+        </p>
+        <p>
+        <label for="genre">ジャンル：</label>
+        <select class="genre" name="genre">
+            <option value="hiphopr&b">HIPHOP/R&B</option>
+            <option value="reggae">REGGAE</option>
+            <option value="EDM">EDM</option>
+            <option value="anison">ANISON</option>
+            <option value="kpop">KPOP</option>
+        </select>
+        </p>
+        <p>
+            <label for="profile">プロフィール：</label>
+            <textarea name="profile"></textarea>
+        </p>
+        <p>
+            <label for="soundcloud">SOUNDCLOUD URL：</label>
+            <input class="mado" type="text" name="soundcloud">
         </p>
         <p>
             <label for="password">パスワード：</label>
@@ -145,15 +167,17 @@ unset($_SESSION["login_err"]);
             <input class="btn" type="submit" value="新規登録">
         </p>
     </form>
-    <a href="login_form.php">ログインする</a>
+    <a class="link" href="login_form.php">ログインする</a>
+    <a class="link" href="user_list.php">DJ一覧</a>
+    <a class="link" href="shop_list.php">店舗一覧</a>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
         <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
-    <audio loop="loop" autoplay="autoplay" > 
-        <source type="audio/mpeg" src="./music/LOOSE YOURSELF.mp3">
+    <audio loop="loop" autoplay="autoplay" >
+        <source type="audio/mpeg" src="./music/Justin Bieber - Peaches - DJ Serg Sniper Return Of The Mack Edit (Clean).mp3">
     </audio>
 </body>
 </html>

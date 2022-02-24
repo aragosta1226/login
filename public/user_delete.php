@@ -20,7 +20,7 @@ $login_user = $_SESSION["login_user"];
     <form action="user_delete2.php" method="POST">
       <h2>ユーザー削除確認画面</h2>
       <p>name: <?= $login_user["name"] ?></p>
-      <p>email: <?= $login_user["email"] ?></p>
+      <!-- <p>email: <?= $login_user["email"] ?></p> -->
       <input type="hidden" name="id" value="<?= $login_user["id"] ?>">
         <button class="btn">削除</button>
     </form>

@@ -13,16 +13,12 @@ if(!$result) {
     return;
 }
 
+//ログインしているユーザーのデータを取ってくる
 $login_user = $_SESSION["login_user"];
 
 // $output = "";
 // foreach ($result as $login_user) {
-//   $output .= "
-//     <tr>
-//       <td>{$login_user["name"]}</td>
-//       <td>{$login_user["email"]}</td>
-//     </tr>
-//   ";
+//   $output .= "";
 // }
 
 ?>
@@ -39,10 +35,12 @@ $login_user = $_SESSION["login_user"];
 <body>
     <h2>マイページ</h2>
     <img src="./images/photo.png" alt="画像">
-    <?= $output ?>
-    <p>ログインユーザー：<?php echo h($login_user["name"]) ?></p>
-    <p>メールアドレス：<?php echo h($login_user["email"]) ?></p>
-    <input type="hidden" name="id" value="<?= $login_user['id'] ?>">
+    <p>NAME：<?php echo h($login_user["name"]) ?></p>
+    <p>EMAIL：<?php echo h($login_user["email"]) ?></p>
+    <p>GENRE：<?php echo h($login_user["genre"]) ?></p>
+    <p>PROFILE：<?php echo h($login_user["profile"]) ?></p>
+    <p>SOUNDCLOUD URL：<?php echo h($login_user["URL"]) ?></p>
+    <input type="hidden" name="id" value="<?= $login_user["id"] ?>">
     <form action="user_edit.php" method="POST">
         <input class="btn" type="submit" name="edit" value="編集する">
     </form>
@@ -56,8 +54,8 @@ $login_user = $_SESSION["login_user"];
     <footer>
         <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
-    <audio loop="loop" autoplay="autoplay" > 
+    <!-- <audio loop="loop" autoplay="autoplay" > 
         <source type="audio/mpeg" src="./music/LOOSE YOURSELF.mp3">
-    </audio>
+    </audio> -->
 </body>
 </html>
