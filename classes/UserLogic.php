@@ -518,6 +518,8 @@ class UserLogic {
             echo json_encode(["sql error" => "{$e->getMessage()}"]);
             exit();
         }
+
+        // $sql = 'SELECT * FROM '
     }
 //     /**
 //      * テーブルを結合させる処理
