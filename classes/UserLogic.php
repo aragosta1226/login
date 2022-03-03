@@ -13,19 +13,18 @@ class UserLogic {
 
         $result = false;
 
-        $sql = 'INSERT INTO todo_table (name, email, genre, profile, URL,
-        password) VALUES (?, ?, ?, ?, ?, ?)';
-
-        // $file = $_FILES["image"];
+        $sql = 'INSERT INTO users_table (name, email, genre,
+        profile, URL, password) VALUES (?, ?, ?, ?, ?, ?)';
+        // var_dump($result);
+        // exit();
 
         //ユーザーデータを配列に入れる
         $arr = [];
-        // $arr[] = $userData['image'];
-        $arr[] = $userData['username'];
+        $arr[] = $userData['name'];
         $arr[] = $userData['email'];
         $arr[] = $userData['genre'];
         $arr[] = $userData['profile'];
-        $arr[] = $userData['soundcloud'];
+        $arr[] = $userData['URL'];
         $arr[] = password_hash($userData['password'],PASSWORD_DEFAULT);
         // var_dump($result);
         // exit();
@@ -56,7 +55,7 @@ class UserLogic {
         $user = self::getUserByEmail($email);
 
         if(!$user) {
-            $_SESSION["msg"] = "emailかパスワードが一致しません。";
+            $_SESSION["msg"] = "emailが一致しません。";
             return $result;
         }
 
@@ -67,11 +66,16 @@ class UserLogic {
         if(password_verify($password, $user["password"])) {
             // ログイン成功
             session_regenerate_id(true);
+            $_SESSION = array();
             $_SESSION["login_user"] = $user;
+            $_SESSION['user_id'] = $user['id'];
+            $_SESSION['session_id'] = session_id();
+            // $_SESSION['is_admin'] = $val['is_admin'];
+            $_SESSION['name'] = $user['name'];
             $result = true;
             return $result;
         }
-        $_SESSION["msg"] = "emailかパスワードが一致しません。";
+        $_SESSION["msg"] = "パスワードが一致しません。";
         return $result;
     }
     /**
@@ -83,7 +87,7 @@ class UserLogic {
         //SQLの準備
         //SQLの実行
         //SQLの結果を返す
-        $sql = 'SELECT * FROM todo_table WHERE email = ?';
+        $sql = 'SELECT * FROM users_table WHERE email = ?';
 
         //emailを配列に入れる
         $arr = [];
@@ -133,7 +137,7 @@ class UserLogic {
 
         $result = false;
 
-        $sql = 'SELECT * FROM todo_table WHERE id=id';
+        $sql = 'SELECT * FROM users_table WHERE id=id';
         // $stmt = connect() -> prepare($sql);
 
         try {
@@ -158,7 +162,7 @@ class UserLogic {
 
         $result = false;
 
-        $sql = 'UPDATE todo_table SET name=:name, email=:email, genre=:genre,
+        $sql = 'UPDATE users_table SET name=:name, email=:email, genre=:genre,
         profile=:profile, URL=:URL, password=:password WHERE id=:id';
 
         if (
@@ -166,7 +170,7 @@ class UserLogic {
             !isset($_POST['email']) || $_POST['email'] == '' ||
             !isset($_POST['genre']) || $_POST['genre'] == '' ||
             !isset($_POST['profile']) || $_POST['profile'] == '' ||
-            !isset($_POST['soundcloud']) || $_POST['soundcloud'] == '' ||
+            !isset($_POST['URL']) || $_POST['URL'] == '' ||
             !isset($_POST['password']) || $_POST['password'] == ''||
             !isset($_POST['id']) || $_POST['id'] == ''
         ) {
@@ -177,7 +181,7 @@ class UserLogic {
         $email = $_POST['email'];
         $genre = $_POST['genre'];
         $profile = $_POST['profile'];
-        $soundcloud = $_POST['soundcloud'];
+        $URL = $_POST['URL'];
         //再登録したパスワードもhash化する
         $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
         $id = $_POST['id'];
@@ -189,7 +193,7 @@ class UserLogic {
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':genre', $genre, PDO::PARAM_STR);
         $stmt->bindValue(':profile', $profile, PDO::PARAM_STR);
-        $stmt->bindValue(':URL', $soundcloud, PDO::PARAM_STR);
+        $stmt->bindValue(':URL', $URL, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
         $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 
@@ -211,7 +215,7 @@ class UserLogic {
 
         $result = false;
 
-        $sql = 'DELETE FROM todo_table WHERE id=:id';
+        $sql = 'DELETE FROM users_table WHERE id=:id';
 
         $id = $_POST['id'];
 
@@ -235,7 +239,7 @@ class UserLogic {
     public static function userList() {
         $result = false;
         // $sql = 'SELECT * FROM todo_table WHERE name=:name, genre=:genre, profile=:profile, URL=:URL';
-        $sql = 'SELECT * FROM todo_table';
+        $sql = 'SELECT * FROM users_table';
         // var_dump($result);
         // exit();
         // print("oooo");
@@ -309,7 +313,12 @@ class UserLogic {
         if(password_verify($password, $user["password"])) {
             // ログイン成功
             session_regenerate_id(true);
+            $_SESSION = array();
             $_SESSION["login_user"] = $user;
+            $_SESSION['shop_id'] = $user['id'];
+            $_SESSION['session_id'] = session_id();
+            // $_SESSION['is_admin'] = $val['is_admin'];
+            $_SESSION['shopname'] = $user['shopname'];
             $result = true;
             return $result;
         }
@@ -464,4 +473,72 @@ class UserLogic {
             exit();
         };
     }
+    /**
+     * LIKEデータの追加
+     * @param array $userData
+     * @return bool $result
+    */
+    public static function userLike() {
+        $result = false;
+
+        $user_id = $_GET['user_id'];
+        $shop_id = $_GET['shop_id'];
+
+        $sql = 'SELECT COUNT(*) FROM like_table WHERE user_id = :user_id AND shop_id = :shop_id';
+        $stmt = connect() -> prepare($sql);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+        $stmt->bindValue(':shop_id', $shop_id, PDO::PARAM_STR);
+
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo json_encode(["sql error" => "{$e->getMessage()}"]);
+            exit();
+        }
+
+        $like_count = $stmt->fetchColumn();
+
+        if($like_count != 0) {
+            //イイネされている状態
+            $sql = 'DELETE FROM like_table WHERE user_id = :user_id AND shop_id = :shop_id';
+        } else {
+            //イイネされていない状態
+            $sql = 'INSERT INTO like_table (id, user_id, shop_id, created_at) VALUES (NULL, :user_id, :shop_id, now())';
+        }
+        $stmt = connect() -> prepare($sql);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_STR);
+        $stmt->bindValue(':shop_id', $shop_id, PDO::PARAM_STR);
+
+        // var_dump($user_id);
+        // exit();
+
+        try {
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo json_encode(["sql error" => "{$e->getMessage()}"]);
+            exit();
+        }
+    }
+//     /**
+//      * テーブルを結合させる処理
+//      * @param array $userData
+//      * @return bool $result
+//     */
+//     public static function userLikes() {
+//         $result = false;
+
+//         $sql = "SELECT * FROM like_table LEFT OUTER JOIN (SELECT shop_id, COUNT(id) AS like_count FROM like_table GROUP BY todo_id) AS result_table ON todo_table.id = result_table.todo_id";
+//         $user_id = $_SESSION["user_id"];
+
+//         $stmt = connect() -> prepare($sql);
+
+//         try {
+//         $status = $stmt->execute();
+//         } catch (PDOException $e) {
+//         echo json_encode(["sql error" => "{$e->getMessage()}"]);
+//         exit();
+//         }
+//         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// }
+
 }

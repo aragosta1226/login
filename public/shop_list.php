@@ -7,6 +7,9 @@ require_once '../functions.php';
 $result = UserLogic::userList2();
 // print_r($result);
 
+$user_id = $_SESSION['user_id'];
+// $shop_id = $_SESSION['shop_id'];
+
 $output = "";
 foreach ($result as $record) {
     $output .= "
@@ -14,6 +17,7 @@ foreach ($result as $record) {
     <td>{$record["shopname"]}</td>
     <td>{$record["genre"]}</td>
     <td>{$record["profile"]}</td>
+    <td><a href='like_create2.php?shop_id={$record["id"]}&user_id={$user_id}'>LIKE</a></td>
     </tr>
     ";
 }
@@ -47,15 +51,15 @@ foreach ($result as $record) {
     <a href="shop_signup_form.php">店舗新規登録！</a><br>
     <a href="signup_form.php">DJ新規登録！</a><br>
     <a class="link" href="user_list.php">DJリスト</a><br>
-    <a href="signup_form.php">TOP</a>
+    <a href="top.php">TOP</a>
     <!-----------------------------------------------------------------------------
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
         <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
-    <audio loop="loop" autoplay="autoplay" >
+    <!-- <audio loop="loop" autoplay="autoplay" >
         <source type="audio/mpeg" src="./music/Justin Bieber - Peaches - DJ Serg Sniper Return Of The Mack Edit (Clean).mp3">
-    </audio>
+    </audio> -->
 </body>
 </html>

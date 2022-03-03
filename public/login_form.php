@@ -28,7 +28,7 @@ session_destroy();
     <title>ログイン画面</title>
 </head>
 <body>
-    <h2>ログインフォーム</h2>
+    <h2>DJ会員ログインフォーム</h2>
     <?php if(isset($err["msg"])) : ?>
         <p><?php echo $err["msg"]; ?></p>
     <?php endif; ?>
@@ -58,8 +58,8 @@ session_destroy();
     <footer>
         <p><small>2022 G's FUKUOKA DEV10-08</small></p>
     </footer>
-    <audio loop="loop" autoplay="autoplay" > 
+    <!-- <audio loop="loop" autoplay="autoplay" > 
         <source type="audio/mpeg" src="./music/Justin Bieber - Peaches - DJ Serg Sniper Return Of The Mack Edit (Clean).mp3">
-    </audio>
+    </audio> -->
 </body>
 </html>

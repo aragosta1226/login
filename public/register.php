@@ -20,7 +20,7 @@ if(!isset($_SESSION["csrf_token"])){
 unset($_SESSION["csrf_token"]);
 
 //バリデーション
-if(!$username = filter_input(INPUT_POST, 'username')) {
+if(!$name = filter_input(INPUT_POST, 'name')) {
     $err[] = "ユーザー名を記入してください。";
 }
 if(!$email = filter_input(INPUT_POST, 'email')) {
@@ -32,7 +32,7 @@ if(!$genre = filter_input(INPUT_POST, 'genre')) {
 if(!$profile = filter_input(INPUT_POST, 'profile')) {
     $err[] = "プロフィールを記入してください。";
 }
-if(!$soundcloud = filter_input(INPUT_POST, 'soundcloud')) {
+if(!$URL = filter_input(INPUT_POST, 'URL')) {
     $err[] = "URLを記入してください。";
 }
 $password = filter_input(INPUT_POST, 'password');
@@ -44,6 +44,9 @@ $password_conf = filter_input(INPUT_POST, 'password_conf');
 if($password !== $password_conf) {
     $err[] = "確認用パスワードと異なっています。";
 }
+
+// var_dump($_POST);
+// exit();
 
 if(count($err) === 0) {
     //ユーザーを登録する処理ロジックの処理を取ってくる
