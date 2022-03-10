@@ -9,36 +9,79 @@ class UserLogic {
      * @param array $userData
      * @return bool $result
     */
-    public static function createUser($userData) {
+    public static function createUser($userData, $save_path) {
 
         $result = false;
 
         $sql = 'INSERT INTO users_table (name, email, genre,
-        profile, URL, password) VALUES (?, ?, ?, ?, ?, ?)';
+        profile, URL, img, password) VALUES (:name, :email, :genre,
+        :profile, :URL, :img, :password)';
+        //VALUESはちゃんと入れるべし
         // var_dump($result);
+        // exit();
+        // if($_SERVER['REQUEST_METHOD'] != 'POST') {
+            //画像を取得
+        // } else {
+            // //画像を保存
+            // if (!empty($_FILES['image']['name'])) {
+            //     $name = $_FILES['image']['name'];
+            //     $type = $_FILES['image']['type'];
+            //     $content = file_get_contents($_FILES['image']['tmp_name']);
+            //     $size = $_FILES['image']['size'];
+
+                // $sql = 'INSERT INTO users_table(image_name, image_type, image_content, image_size) VALUE(:image_name, :image_type, :image_content, :image_size)';
+                // $stmt = connect() -> prepare($sql);
+                // $stmt->bindValue(':image_name', $name, PDO::PARAM_STR);
+                // $stmt->bindValue(':image_type', $type, PDO::PARAM_STR);
+                // $stmt->bindValue(':image_content', $content, PDO::PARAM_STR);
+                // $stmt->bindValue(':image_size', $size, PDO::PARAM_STR);
+            // }
+        // }
+
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $genre = $_POST['genre'];
+        $profile = $_POST['profile'];
+        $URL = $_POST['URL'];
+        // $img = $_FILES['img'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        // var_dump($save_path);
+        // exit();
+
+        $stmt = connect() -> prepare($sql);
+        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':genre', $genre, PDO::PARAM_STR);
+        $stmt->bindValue(':profile', $profile, PDO::PARAM_STR);
+        $stmt->bindValue(':URL', $URL, PDO::PARAM_STR);
+        $stmt->bindValue(':img', $save_path, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+
+        // var_dump($sql);
         // exit();
 
         //ユーザーデータを配列に入れる
-        $arr = [];
-        $arr[] = $userData['name'];
-        $arr[] = $userData['email'];
-        $arr[] = $userData['genre'];
-        $arr[] = $userData['profile'];
-        $arr[] = $userData['URL'];
-        $arr[] = password_hash($userData['password'],PASSWORD_DEFAULT);
-        // var_dump($result);
+        // $arr = [];
+        // $arr[] = $userData['name'];
+        // $arr[] = $userData['email'];
+        // $arr[] = $userData['genre'];
+        // $arr[] = $userData['profile'];
+        // $arr[] = $userData['URL'];
+        // $arr[] = $userData['upfile'];
+        // $arr[] = $userData['image'];
+        // $arr[] = password_hash($userData['password'],PASSWORD_DEFAULT);
+        // var_dump($result));
         // exit();
 
         try {
-            $stmt = connect() -> prepare($sql);
-            $result = $stmt -> execute($arr);
-            return $result;
+            $result = $stmt -> execute();
             // var_dump($result);
             // exit();
+            return $result;
         } catch(\Exception $e) {
-            return $result;
             // var_dump($result);
             // exit();
+            return $result;
         }
     }
 
@@ -163,7 +206,7 @@ class UserLogic {
         $result = false;
 
         $sql = 'UPDATE users_table SET name=:name, email=:email, genre=:genre,
-        profile=:profile, URL=:URL, password=:password WHERE id=:id';
+        profile=:profile, URL=:URL, image=:image, password=:password WHERE id=:id';
 
         if (
             !isset($_POST['name']) || $_POST['name'] == '' ||
@@ -171,10 +214,11 @@ class UserLogic {
             !isset($_POST['genre']) || $_POST['genre'] == '' ||
             !isset($_POST['profile']) || $_POST['profile'] == '' ||
             !isset($_POST['URL']) || $_POST['URL'] == '' ||
+            !isset($_POST['image']) || $_POST['image'] == '' ||
             !isset($_POST['password']) || $_POST['password'] == ''||
             !isset($_POST['id']) || $_POST['id'] == ''
         ) {
-            exit('paramError');
+            exit('入力エラー');
         }
 
         $name = $_POST['name'];
@@ -182,6 +226,8 @@ class UserLogic {
         $genre = $_POST['genre'];
         $profile = $_POST['profile'];
         $URL = $_POST['URL'];
+        $image = $_POST['image'];
+
         //再登録したパスワードもhash化する
         $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
         $id = $_POST['id'];
@@ -194,6 +240,7 @@ class UserLogic {
         $stmt->bindValue(':genre', $genre, PDO::PARAM_STR);
         $stmt->bindValue(':profile', $profile, PDO::PARAM_STR);
         $stmt->bindValue(':URL', $URL, PDO::PARAM_STR);
+        $stmt->bindValue(':image', $save_path, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
         $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 
@@ -260,26 +307,42 @@ class UserLogic {
      * @param array $userData
      * @return bool $result
     */
-    public static function createUser2($userData) {
+    public static function createUser2($userData, $save_path) {
 
         $result = false;
 
-        $sql = 'INSERT INTO shop_table (shopname, email, genre, profile,
-        password) VALUES (?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO shop_table (shopname, email, genre, profile, img,
+        password) VALUES (:shopname, :email, :genre, :profile, :img,
+        :password)';
 
         //ユーザーデータを配列に入れる
-        $arr = [];
-        $arr[] = $userData['shopname'];
-        $arr[] = $userData['email'];
-        $arr[] = $userData['genre'];
-        $arr[] = $userData['profile'];
-        $arr[] = password_hash($userData['password'],PASSWORD_DEFAULT);
+        // $arr = [];
+        // $arr[] = $userData['shopname'];
+        // $arr[] = $userData['email'];
+        // $arr[] = $userData['genre'];
+        // $arr[] = $userData['profile'];
+        // $arr[] = password_hash($userData['password'],PASSWORD_DEFAULT);
         // var_dump($result);
         // exit();
 
+        $shopname = $_POST['shopname'];
+        $email = $_POST['email'];
+        $genre = $_POST['genre'];
+        $profile = $_POST['profile'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        // var_dump($save_path);
+        // exit();
+
+        $stmt = connect() -> prepare($sql);
+        $stmt->bindValue(':shopname', $shopname, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
+        $stmt->bindValue(':genre', $genre, PDO::PARAM_STR);
+        $stmt->bindValue(':profile', $profile, PDO::PARAM_STR);
+        $stmt->bindValue(':img', $save_path, PDO::PARAM_STR);
+        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+
         try {
-            $stmt = connect() -> prepare($sql);
-            $result = $stmt -> execute($arr);
+            $result = $stmt -> execute();
             return $result;
             // var_dump($result);
             // exit();
@@ -395,7 +458,7 @@ class UserLogic {
             !isset($_POST['password']) || $_POST['password'] == ''||
             !isset($_POST['id']) || $_POST['id'] == ''
         ) {
-            exit('paramError');
+            exit('入力エラー');
         }
 
         $shopname = $_POST['shopname'];

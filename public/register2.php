@@ -42,9 +42,39 @@ if($password !== $password_conf) {
     $err[] = "確認用パスワードと異なっています。";
 }
 
+$img = $_FILES['img']['name'];
+$img_data = "";
+if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
+    // 情報の取得
+    $uploaded_file_name = $_FILES['img']['name'];
+    $temp_path  = $_FILES['img']['tmp_name'];
+    $directory_path = 'upload/';
+    // ファイル名の準備
+    $extension = pathinfo($uploaded_file_name, PATHINFO_EXTENSION);
+    $unique_name = date('YmdHis').md5(session_id()) . '.' . $extension;
+    $save_path = $directory_path . $unique_name;
+    // var_dump($save_path);
+    // exit();
+    if (is_uploaded_file($temp_path)) {
+    // var_dump($temp_path);
+    // exit();
+      if (move_uploaded_file($temp_path, $save_path)) {
+        chmod($save_path, 0644);
+        // $img_data = $save_path;
+      } else {
+        exit('Error:アップロードできませんでした');
+      }
+    } else {
+      exit('Error:画像がありません');
+    }
+  } else {
+    exit('Error:画像が送信されていません');
+  }
+
+
 if(count($err) === 0) {
     //ユーザーを登録する処理ロジックの処理を取ってくる
-    $hasCreated = UserLogic::createUser2($_POST);
+    $hasCreated = UserLogic::createUser2($_POST, $save_path);
 
     if(!$hasCreated) {
         $err[] = "登録に失敗しました";

@@ -14,6 +14,7 @@ $output = "";
 foreach ($result as $record) {
     $output .= "
     <tr>
+    <td><img src='{$record["img"]}' height='150px'></td>
     <td>{$record["shopname"]}</td>
     <td>{$record["genre"]}</td>
     <td>{$record["profile"]}</td>
@@ -31,17 +32,17 @@ foreach ($result as $record) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
-    <title>店舗リスト</title>
+    <title>店舗LIST</title>
 </head>
 <body>
     <img src="./images/sotsusei.jpeg" alt="クラブ">
-    <h2>店舗リスト</h2>
+    <h2>店舗LIST</h2>
     <table>
         <thead>
             <tr>
                 <th>SHOP NAME</th>
-                <th>ジャンル</th>
-                <th>プロフィール</th>
+                <th>GENRE</th>
+                <th>PROFILE</th>
             </tr>
         </thead>
         <tbody>
@@ -56,7 +57,7 @@ foreach ($result as $record) {
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
-        <p><small>2022 G's FUKUOKA DEV10-08</small></p>
+        <p><small>2022 G's FUKUOKA DEV10-10</small></p>
     </footer>
     <!-- <audio loop="loop" autoplay="autoplay" >
         <source type="audio/mpeg" src="./music/Justin Bieber - Peaches - DJ Serg Sniper Return Of The Mack Edit (Clean).mp3">

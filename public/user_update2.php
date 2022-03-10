@@ -15,10 +15,10 @@
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
-        <p><small>2022 G's FUKUOKA DEV10-08</small></p>
+        <p><small>2022 G's FUKUOKA DEV10-10</small></p>
     </footer>
-    <audio loop="loop" autoplay="autoplay" > 
+    <!-- <audio loop="loop" autoplay="autoplay" > 
         <source type="audio/mpeg" src="./music/LOOSE YOURSELF.mp3">
-    </audio>
+    </audio> -->
 </body>
 </html>

@@ -31,17 +31,17 @@ unset($_SESSION["login_err"]);
     <?php if(isset($login_err)) : ?>
         <p><?php echo $login_err; ?></p>
     <?php endif; ?>
-    <form action="register.php" method="POST">
+    <form action="register.php" method="POST" enctype="multipart/form-data">
         <p>
-            <label for="name">ユーザー名：</label>
+            <label for="name">NAME：</label>
             <input class="mado" type="text" name="name">
         </p>
         <p>
-            <label for="email">メールアドレス：</label>
+            <label for="email">EMAIL：</label>
             <input class="mado" type="email" name="email">
         </p>
         <p>
-        <label for="genre">ジャンル：</label>
+        <label for="genre">GENRE：</label>
         <select class="genre" name="genre">
             <option value="hiphopr&b">HIPHOP/R&B</option>
             <option value="reggae">REGGAE</option>
@@ -51,7 +51,7 @@ unset($_SESSION["login_err"]);
         </select>
         </p>
         <p>
-            <label for="profile">プロフィール：</label>
+            <label for="profile">PROFILE：</label>
             <textarea name="profile"></textarea>
         </p>
         <p>
@@ -59,11 +59,15 @@ unset($_SESSION["login_err"]);
             <input class="mado" type="text" name="URL">
         </p>
         <p>
-            <label for="password">パスワード：</label>
+            <label for="img">PHOTO：</label>
+            <input type="file" accept="image/*" capture="camera" name="img" />
+        </p>
+        <p>
+            <label for="password">PASSWORD：</label>
             <input class="mado" type="password" name="password">
         </p>
         <p>
-            <label for="password_conf">パスワード確認：</label>
+            <label for="password_conf">PASSWORD確認：</label>
             <input class="mado" type="password" name="password_conf">
         </p>
         <!-- <input type="hiddin" name="csrf_token" value="<?php echo h(setToken()); ?>"> -->
@@ -79,7 +83,7 @@ unset($_SESSION["login_err"]);
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
-        <p><small>2022 G's FUKUOKA DEV10-08</small></p>
+        <p><small>2022 G's FUKUOKA DEV10-10</small></p>
     </footer>
     <!-- <audio loop="loop" autoplay="autoplay" >
         <source type="audio/mpeg" src="./music/Justin Bieber - Peaches - DJ Serg Sniper Return Of The Mack Edit (Clean).mp3">

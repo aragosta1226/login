@@ -23,14 +23,15 @@ $login_user = $_SESSION["login_user"];
 </head>
 
 <body>
-  <form action="user_update.php" method="POST">
+  <form action="user_update.php" method="POST" enctype="multipart/form-data">
       <h2>ユーザー編集画面</h2>
-      <p>name: <input class="mado" type="text" name="name" value="<?= $login_user["name"] ?>"></p>
-      <p>email: <input class="mado" type="email" name="email" value="<?= $login_user["email"] ?>"></p>
-      <p>genre: <input class="mado" type="text" name="genre" value="<?= $login_user["genre"] ?>"></p>
-      <p>profile: <input class="mado" type="text" name="profile" value="<?= $login_user["profile"] ?>"></p>
-      <p>SOUNDCLOUD: <input class="mado" type="text" name="soundcloud" value="<?= $login_user["URL"] ?>"></p>
-      <p>password: <input class="mado" type="password" name="password" value="<?= $login_user["password"] ?>"></p>
+      <p>NAME: <input class="mado" type="text" name="name" value="<?= $login_user["name"] ?>"></p>
+      <p>EMAIL: <input class="mado" type="email" name="email" value="<?= $login_user["email"] ?>"></p>
+      <p>GENRE: <input class="mado" type="text" name="genre" value="<?= $login_user["genre"] ?>"></p>
+      <p>PROFILE: <input class="mado" type="text" name="profile" value="<?= $login_user["profile"] ?>"></p>
+      <p>SOUNDCLOUD: <input class="mado" type="text" name="URL" value="<?= $login_user["URL"] ?>"></p>
+      <p>PHOTO：<input type="file" name="upfile" enctype="multipart/form-data" /></p>
+      <p>PASSWORD: <input class="mado" type="password" name="password" value="<?= $login_user["password"] ?>"></p>
       <div>
         <input type="hidden" name="id" value="<?= $login_user["id"] ?>">
       </div>
@@ -46,7 +47,7 @@ $login_user = $_SESSION["login_user"];
     * フッター
     ------------------------------------------------------------------------------>
     <footer>
-        <p><small>2022 G's FUKUOKA DEV10-08</small></p>
+        <p><small>2022 G's FUKUOKA DEV10-10</small></p>
     </footer>
     <!-- <audio loop="loop" autoplay="autoplay" > 
         <source type="audio/mpeg" src="./music/Joel Corry x MNEK - Head & Heart.mp3">

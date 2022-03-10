@@ -32,7 +32,7 @@ unset($_SESSION["login_err"]);
     <?php if(isset($login_err)) : ?>
         <p><?php echo $login_err; ?></p>
     <?php endif; ?>
-    <form action="register2.php" method="POST">
+    <form action="register2.php" method="POST" enctype="multipart/form-data">
         <p>
             <label for="shopname">SHOP名：</label>
             <input class="mado" type="text" name="shopname">
@@ -54,6 +54,10 @@ unset($_SESSION["login_err"]);
         <p>
             <label for="profile">プロフィール：</label>
             <textarea name="profile"></textarea>
+        </p>
+        <p>
+            <label for="img">PHOTO：</label>
+            <input type="file" accept="image/*" capture="camera" name="img" />
         </p>
         <p>
             <label for="password">パスワード：</label>
