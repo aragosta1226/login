@@ -23,13 +23,13 @@ $login_user = $_SESSION["login_user"];
 </head>
 
 <body>
-  <form action="shop_update.php" method="POST">
+  <form action="shop_update.php" method="POST" enctype="multipart/form-data">
       <h2>ユーザー編集画面</h2>
       <p>name: <input class="mado" type="text" name="shopname" value="<?= $login_user["shopname"] ?>"></p>
       <p>email: <input class="mado" type="email" name="email" value="<?= $login_user["email"] ?>"></p>
       <p>genre: <input class="mado" type="text" name="genre" value="<?= $login_user["genre"] ?>"></p>
       <p>profile: <input class="mado" type="text" name="profile" value="<?= $login_user["profile"] ?>"></p>
-      <p>PHOTO：<input type="file" name="image" required></p>
+      <p>PHOTO：<input type="file" accept="image/*" capture="camera" name="img" /></p>
       <p>password: <input class="mado" type="password" name="password" value="<?= $login_user["password"] ?>"></p>
       <div>
         <input type="hidden" name="id" value="<?= $login_user["id"] ?>">

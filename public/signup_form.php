@@ -43,11 +43,13 @@ unset($_SESSION["login_err"]);
         <p>
         <label for="genre">GENRE：</label>
         <select class="genre" name="genre">
-            <option value="hiphopr&b">HIPHOP/R&B</option>
-            <option value="reggae">REGGAE</option>
+            <option value="HIPHOP/R&B">HIPHOP/R&B</option>
+            <option value="REGGAE">REGGAE</option>
             <option value="EDM">EDM</option>
-            <option value="anison">ANISON</option>
-            <option value="kpop">KPOP</option>
+            <option value="ANISON">ANISON</option>
+            <option value="K-POP">K-POP</option>
+            <option value="ROCK">ROCK</option>
+            <option value="その他">その他</option>
         </select>
         </p>
         <p>

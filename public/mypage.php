@@ -34,7 +34,8 @@ $login_user = $_SESSION["login_user"];
 </head>
 <body>
     <h2>マイページ</h2>
-    <img src="./images/photo.png" alt="画像">
+    <!-- <img src="./images/photo.png" alt="画像"> -->
+    <img src='<?php echo h($login_user["img"])?>' height="300px"/>
     <p>NAME：<?php echo h($login_user["name"]) ?></p>
     <p>EMAIL：<?php echo h($login_user["email"]) ?></p>
     <p>GENRE：<?php echo h($login_user["genre"]) ?></p>

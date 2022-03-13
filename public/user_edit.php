@@ -30,7 +30,7 @@ $login_user = $_SESSION["login_user"];
       <p>GENRE: <input class="mado" type="text" name="genre" value="<?= $login_user["genre"] ?>"></p>
       <p>PROFILE: <input class="mado" type="text" name="profile" value="<?= $login_user["profile"] ?>"></p>
       <p>SOUNDCLOUD: <input class="mado" type="text" name="URL" value="<?= $login_user["URL"] ?>"></p>
-      <p>PHOTO：<input type="file" name="upfile" enctype="multipart/form-data" /></p>
+      <p>PHOTO：<input type="file" accept="image/*" capture="camera" name="img" /></p>
       <p>PASSWORD: <input class="mado" type="password" name="password" value="<?= $login_user["password"] ?>"></p>
       <div>
         <input type="hidden" name="id" value="<?= $login_user["id"] ?>">

@@ -201,12 +201,13 @@ class UserLogic {
      * @param array $userData
      * @return bool $result
     */
-    public static function updateUser() {
+    //引数に持ってきたいデータを入れる
+    public static function updateUser($save_path) {
 
         $result = false;
 
         $sql = 'UPDATE users_table SET name=:name, email=:email, genre=:genre,
-        profile=:profile, URL=:URL, image=:image, password=:password WHERE id=:id';
+        profile=:profile, URL=:URL, img=:img, password=:password WHERE id=:id';
 
         if (
             !isset($_POST['name']) || $_POST['name'] == '' ||
@@ -214,7 +215,7 @@ class UserLogic {
             !isset($_POST['genre']) || $_POST['genre'] == '' ||
             !isset($_POST['profile']) || $_POST['profile'] == '' ||
             !isset($_POST['URL']) || $_POST['URL'] == '' ||
-            !isset($_POST['image']) || $_POST['image'] == '' ||
+            // !isset($_POST['img']) || $_POST['img'] == '' ||
             !isset($_POST['password']) || $_POST['password'] == ''||
             !isset($_POST['id']) || $_POST['id'] == ''
         ) {
@@ -226,12 +227,12 @@ class UserLogic {
         $genre = $_POST['genre'];
         $profile = $_POST['profile'];
         $URL = $_POST['URL'];
-        $image = $_POST['image'];
+        // $image = $_POST['img'];
 
         //再登録したパスワードもhash化する
         $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
         $id = $_POST['id'];
-        // var_dump($id);
+        // var_dump($save_path);
         // exit();
 
         $stmt = connect() -> prepare($sql);
@@ -240,7 +241,7 @@ class UserLogic {
         $stmt->bindValue(':genre', $genre, PDO::PARAM_STR);
         $stmt->bindValue(':profile', $profile, PDO::PARAM_STR);
         $stmt->bindValue(':URL', $URL, PDO::PARAM_STR);
-        $stmt->bindValue(':image', $save_path, PDO::PARAM_STR);
+        $stmt->bindValue(':img', $save_path, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
         $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 
@@ -443,12 +444,12 @@ class UserLogic {
      * @param array $userData
      * @return bool $result
     */
-    public static function updateUser2() {
+    public static function updateUser2($save_path) {
 
         $result = false;
 
         $sql = 'UPDATE shop_table SET shopname=:shopname, email=:email, genre=:genre,
-        profile=:profile, password=:password WHERE id=:id';
+        profile=:profile, img=:img, password=:password WHERE id=:id';
 
         if (
             !isset($_POST['shopname']) || $_POST['shopname'] == '' ||
@@ -476,6 +477,7 @@ class UserLogic {
         $stmt->bindValue(':email', $email, PDO::PARAM_STR);
         $stmt->bindValue(':genre', $genre, PDO::PARAM_STR);
         $stmt->bindValue(':profile', $profile, PDO::PARAM_STR);
+        $stmt->bindValue(':img', $save_path, PDO::PARAM_STR);
         $stmt->bindValue(':password', $password, PDO::PARAM_STR);
         $stmt->bindValue(':id', $id, PDO::PARAM_STR);
 

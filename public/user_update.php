@@ -4,13 +4,15 @@ require_once '../classes/UserLogic.php';
 require_once '../functions.php';
 
 //ロジックの処理を取ってくる
-$result = UserLogic::updateUser();
+// $result = UserLogic::updateUser();
 
 
-if (isset($_FILES['upfile']) && $_FILES['upfile']['error'] == 0) {
+$img = $_FILES['img']['name'];
+$img_data = "";
+if (isset($_FILES['img']) && $_FILES['img']['error'] == 0) {
     // 情報の取得
-    $uploaded_file_name = $_FILES['upfile']['name'];
-    $temp_path  = $_FILES['upfile']['tmp_name'];
+    $uploaded_file_name = $_FILES['img']['name'];
+    $temp_path  = $_FILES['img']['tmp_name'];
     $directory_path = 'upload/';
     // ファイル名の準備
     $extension = pathinfo($uploaded_file_name, PATHINFO_EXTENSION);
@@ -19,8 +21,11 @@ if (isset($_FILES['upfile']) && $_FILES['upfile']['error'] == 0) {
     // var_dump($save_path);
     // exit();
     if (is_uploaded_file($temp_path)) {
+    // var_dump($temp_path);
+    // exit();
       if (move_uploaded_file($temp_path, $save_path)) {
         chmod($save_path, 0644);
+        // $img_data = $save_path;
       } else {
         exit('Error:アップロードできませんでした');
       }
@@ -30,6 +35,9 @@ if (isset($_FILES['upfile']) && $_FILES['upfile']['error'] == 0) {
   } else {
     exit('Error:画像が送信されていません');
   }
+
+//ロジックの処理を取ってくる
+$result = UserLogic::updateUser($save_path);
 
 
 header('Location:user_update2.php');
