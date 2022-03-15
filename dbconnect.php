@@ -8,7 +8,12 @@ function connect() {
     $user = DB_USER;
     $pass = DB_PASS;
 
-    $dsn  = "mysql:host=$host; dbname=$db; charset=utf8mb4";
+    //ローカルで開発する時回復させる
+    // $dsn  = "mysql:host=$host; dbname=$db; charset=utf8mb4";
+
+    $dbn = 'mysql:dbname=$db;charset=utf8mb4;port=3306;host=$host';
+    // $user = '341939d00bb59b8c9bb09f2528d53d80';
+    // $pwd = '省略';
 
     //エラーを検知するためにtry.catchで囲む
     try {

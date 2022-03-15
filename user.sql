@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: localhost
--- 生成日時: 2022 年 3 月 10 日 12:29
+-- 生成日時: 2022 年 3 月 13 日 12:35
 -- サーバのバージョン： 10.4.21-MariaDB
 -- PHP のバージョン: 8.1.1
 
@@ -82,10 +82,11 @@ CREATE TABLE `shop_table` (
 --
 
 INSERT INTO `shop_table` (`id`, `shopname`, `email`, `genre`, `profile`, `img`, `password`) VALUES
-(2, 'bar G\'s FUKUOKA', 'gs@tonkotsu.com', 'EDM,KPOP', 'GEEKが集まるお店です。', NULL, '$2y$10$PwyCLFQdts8fTBa59IV0feNMMYPz3kzfzDEeQBbQbM9S/YaBC4ree'),
-(4, 'club Mentai', 'mentai@tonkotsu.com', 'kpop', '20代中心のK-POPが流れるお店です。', NULL, '$2y$10$N81AmukDgcAN7OaW/8lP1uk1qENv2vVJykHNzqHfAfHNhTcUNVhmy'),
-(5, 'bar G\'s FUKUOKA', 'gs@tonkotsu.com', 'EDM', 'プログラマーが集まるバーです。', NULL, '$2y$10$VERxDWARwScIYLWHS4jC3e1bMpkrn6bsh368IO31J7QyA2vTjBdVi'),
-(6, 'bar G\'s FUKUOKA2', 'gs@h.com', 'EDM', 'sdhkshkdsj', 'upload/202203101226131762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$435MUcxUfsCG7gmwScY6.es9n2rWZ0A6nSEy0XKoeGh.kTlEsh6F.');
+(4, 'club Mentai', 'mentai@tonkotsu.com', 'K-POP', '20代中心のK-POPが流れるお店です。', 'upload/20220311091345dee291aa72f72b3df6713caa8e3c9c25.png', '$2y$10$GNb4xlmY/1BEOMA/DEPimu8Z8bVbITmlFmNohdjX0T5seoRRY7kAO'),
+(5, 'bar G\'s FUKUOKA', 'gs@tonkotsu.com', 'EDM', 'プログラマーが集まるバーです。', 'upload/20220311091236d7b63d7f1f29641d9366d70f6405800a.png', '$2y$10$3h.xLkC/uP7fCr9kilJklOoXsg8Tf0voGIFWDN.GXCtMDCK0a8hxa'),
+(6, 'bar G\'s FUKUOKA2', 'gs@h.com', 'EDM', 'sdhkshkdsj', 'upload/202203101226131762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$435MUcxUfsCG7gmwScY6.es9n2rWZ0A6nSEy0XKoeGh.kTlEsh6F.'),
+(7, 'club TONKOTSU', 'tonkotsu@t.com', 'ROCK', '「とんこつロックをおみまいするぜ！」をモットーに、ロックなイベントを開催しています。', 'upload/20220311092634dee291aa72f72b3df6713caa8e3c9c25.png', '$2y$10$Zq76YnrLLRvjAc4AllTU6egSuaFJgqXgHVh/AhO1SRCtcMc07rufe'),
+(8, 'bar YAMACHAN', 'yamachan@y.com', 'その他', '親富孝通りのラーメンと言ったらやまちゃん。フロアを盛り上げてくれるバイト募集中です。', 'upload/20220311093025fedaf6327736e009c5d8a2640bdc8643.png', '$2y$10$yTjckm8WE0F/LlzygqD0pe42SRdnPmgdc6ttfjREN62coFTbpNwDa');
 
 -- --------------------------------------------------------
 
@@ -109,25 +110,15 @@ CREATE TABLE `users_table` (
 --
 
 INSERT INTO `users_table` (`id`, `name`, `email`, `genre`, `profile`, `URL`, `img`, `password`) VALUES
-(49, 'aragosta8', 'aragosta@tonkotsu.com', 'hiphopr&b', 'ssssss', 'https://soundcloud.com/yuki-djaragosta-yuki?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', NULL, '$2y$10$qIybNqeLMmgH3bA0jI5T/uPzjcUXrvYsLh9FrjLe4SIJNJZmMTkNy'),
-(55, 'aragosta2', 'aaa@tonkotsu.com', 'reggae,hiphop,edm,kpop', 'sjsjdsajhsadasdhjaskhjdsahdjhshsdasjghdj', 'https://soundcloud.com/yuki-djaragosta-yuki?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', NULL, '$2y$10$VodrSgbwHIYdqCSvqFmj8.GgGoFPlP/lBtcfwQtXVQQAtNGDAdPBW'),
-(56, 'DJ hanamaru', 'hanamaru@tonkotsu.com', 'reggae', '1970年04月08日173cm /72kg B型福岡県 福岡市早良区出身。趣味は野球観戦(ソフトバンクホークス)/サウナ/競艇/ランチ探し/ゴルフ/テニス。ものまねが得意です。', 'https://profile.yoshimoto.co.jp/talent/detail?id=213', NULL, '$2y$10$ypjpc5veCS.Azhw5wpuDqOKv2Dd.14tVB9OwPZcX10w74/L5EzFku'),
-(58, 'aragosta', 'djaragosta12262@gmail.com', 'reggae,hiphop,edm', 'dahsdgjasgdahdjasfha', 'https://soundcloud.com/yuki2-djaragosta-yuki?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing', NULL, '$2y$10$Qdj3sFjHeVtZcVZMN05uMOHcxZA2wq2GNIoVRdJu42DYiB6sqxel6'),
-(59, 'とんこつラーメン', 'tonkotsu4@tonkotsu.com', 'reggae', 'sdhdkhkjsadks', 'https://soundcloud.com/yuki5-djaragosta-yuki', NULL, '$2y$10$VxHuJ3cYgWeOg7xUUvjPG.HoSpZ3VBMHGF3ir/r5.QPIXd1m7AhcO'),
-(60, '牧のうどん', 'm@g.com', 'EDM', 'hjkjhkhkh', 'https://soundcloud.com/yuki2-djaragosta-yuki', NULL, '$2y$10$BPoNncRIOG.yGAmxNborQ.fxBQTlxXVqayeQzV/TewnBPPL2g7mju'),
-(61, 'sss', 'sss@s.com', 'EDM', 'sahdkhkhdhdk', 'https://soundcloud.com/yuki-djaragosta-yuki', NULL, '$2y$10$xkkjz/60k18jxFHfsCMru.MlO3Jag2PPA36gQdl0q8L.p..zrGgEe'),
-(62, 'あらごすた', 'a@a.com', 'reggae', 'dsdsifgdfgykau', 'https://soundcloud.com/yuki-djaragosta-yuki', NULL, '$2y$10$EKeZufDjzVdQBScbP6zNj.eFEZ5GSyMGH23Q3bUQxNJY.JQixeyLe'),
-(63, 'aragostd', 'aragosta@h.com', 'reggae', 'dasdshkjd', 'https://soundcloud.com/yuk1i-djaragosta-yuki', NULL, '$2y$10$7xWUZlRbn3lkJ0cK2FeCb.1g1I.kdqmjnGC7GJVw/mVSRmKYYnyPm'),
-(64, 'DJ ARAGOSTA3', 'aragosta@j.com', 'EDM', 'hghfhhjfhf', 'https://soundcloud.com/yuki5-djaragosta-yuki', NULL, '$2y$10$sOQDptbg/Gys7TzZ5//yRujCehY0dLpaVswVhk4z4JVDFMjHewIxS'),
-(65, 'ss', 'ss@s.com', 'reggae', 'jhgjfhghfh', 'https://soundcloud.com/yuki3-djaragosta-yuki', NULL, '$2y$10$HAU.zELoVtZ1AfxLknAx2.1NaoGw0N1rTSbY/PfRvryJQCJ3jYsJG'),
-(66, 'hjsdfkshd', 'aragostaj@g.com', 'anison', 'sdkjkfhskhadfljk', 'https://soundcloud.com/yuki4-djaragosta-yuki', 'Array', '$2y$10$U9dNg5br9U01R5KrcdVG4uwzZLPJRML0mwqu.S7Y8fj19NoKnGiOm'),
-(67, 'gjhgjhkj', 'aragosta@k.com', 'anison', 'hkjhkhkhjkh', 'https://soundcloud.com/yuki6-djaragosta-yuki', NULL, '$2y$10$PG03nVB4.U/AQUc741e/2Ou61KYZh74d4IiHz2MW8PxJHYQuLfAK6'),
-(68, 'd', 'aragostaf@g.com', 'reggae', 'sdjgjasdhgasj', 'https://soundcloud.com/yukiq-djaragosta-yuki', NULL, '$2y$10$2KbJG601xCr2jn0k8wqdWuQ72zFoymM2TwWnMWkkxdcBZwBJRZTLe'),
-(69, 'a', 's', 'h', ' f', 'f', 'g', 'f'),
-(70, 'd', 'aragostad@g.com', 'reggae', 'asdadkhdjk', 'https://soundcloud.com/yuki3-djaragosta-yuki', 'upload/202203100845131762ba29e6c253f7b0d27ef499d108a8.jpeg', '$2y$10$KiNMXhv5xvgOltKxRre4zeVidQUhM8ZKB7zbEZXM0C6Nqe3bz3F06'),
-(71, 'x', 'aragostax@c.com', 'EDM', 'czcdjsfksdl', 'https://soundcloud.com/yuki2f-djaragosta-yuki', 'upload/202203100846231762ba29e6c253f7b0d27ef499d108a8.jpeg', '$2y$10$uT5YicP/PWiiPoLC5Tq7w.B.PD36tBhKVBNOILHc.LJn167Cx2Cre'),
-(72, 's', 'aragostad@f.com', 'reggae', 'dsdasjkhdas', 'https://soundcloud.com/yuki2-djaragosta-yuki', 'upload/202203100847351762ba29e6c253f7b0d27ef499d108a8.jpeg', '$2y$10$Ox5EAfKtfJ2t53mKxTfBbuC0y6V4q5aWFaaQOh1sdtG87sg4KZ.A2'),
-(73, 'dshjsdk', 'aragosta@f.com', 'anison', 'sdashkhsdkjs', 'https://soundcloud.com/yuki2-djaragosta-yuki', 'upload/202203100849451762ba29e6c253f7b0d27ef499d108a8.jpeg', '$2y$10$ttY5YalcDyMRWL3NBu0S3uClQ8kihGN8Nh0vvx/73eW1ljeEOLFS2');
+(74, 'DJ DEGUCHI', 'deguchi@d.com', 'EDM', 'EDMをメインに選曲し、女の子を踊らせるのが得意です。', 'https://soundcloud.com/djdeguchi', 'upload/20220311084528c5f7a15034bfb21d2866615e44787009.png', '$2y$10$xU2jSuDZoxRsyVmChmbtn.k1MPX78.ir2k8f5UiWuQZZXzGrbW5Fa'),
+(75, 'DJ HAGA', 'haga@h.com', 'HIPHOP/R&B', '日本語ラップメインで選曲していきます。', 'https://soundcloud.com/djhaga', 'upload/202203110729351762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$3dtP0vrhXyqt4Wo2YcTuBOMf6MKZAe8na/Zwk0s8cPc6eiUrIANbu'),
+(76, 'DJ SONODA', 'sonoda@s.com', 'K-POP', 'K-POPから何でも繋いでいくオールラウンダーです。マイクで話すとイケボと言われます。ノート作ってます。', 'https://soundcloud.com/sonoda', 'upload/202203110731191762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$i5qFepNYiBdDGDubJTd1S.3BIVDwgKC963eK3B8SEMzmRNA9fOx1G'),
+(77, 'DJ KUNITAKE', 'kunitake@k.com', 'ANISON', '趣味が城を見にいく事なので、主に戦国時代が舞台のアニメの曲をメインで選曲します。あとは奥さんが韓流ドラマにハマっているので、K-POPも織り交ぜていきます。解像度上げていきます。', 'https://soundcloud.com/djkunitake', 'upload/202203110733421762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$vEXdQdAsojO5zazufwhgvOsnBbzqijtw7/8/MnpM8jzLeXoDvDciq'),
+(78, 'DJ HARADA', 'harada@h.com', 'ROCK', 'ワンオクロックが好きなのでそこからフロアの状況を見ながら、お客さんの熱量に合わせてその場にあったROCKを選曲します。', 'https://soundcloud.com/djharada', 'upload/202203110736361762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$H625..27j2v4wuZTueeSiuO8QfIeZVpb21PIf.liHCYk7PzVCi5nm'),
+(79, 'DJ ENOKI', 'enoki@e.com', 'その他', 'その場を一気に緑の世界に誘います。It\'s a green world', 'https://soundcloud.com/djenoki', 'upload/202203110737561762ba29e6c253f7b0d27ef499d108a8.png', '$2y$10$oOeIYFBZvQZJBUAEQdqyJuT8kbAfQNC9VuqWu5MwzHoYraDC9jlOy'),
+(80, 'DJ ARAGOSTA', 'aragosta@a.com', 'REGGAE', 'レゲエが得意です。気付いたらフロアに踊りに行ってしまうこともありますが、そこを含めよろしくお願いします。', 'https://soundcloud.com/yuki-djaragosta-yuki', 'upload/202203110931382b418c55329b76bc799993a3c2223eea.jpg', '$2y$10$p.U48QHhiFIN23b0Z/jk4eyBFYcrQje1fKCAtKKZghPlwxDY.byVq'),
+(81, 'DJ めんたいこ', 'menntai@m.com', 'HIPHOP/R&B', 'えんたい', 'https://soundcloud.com/mentai', 'upload/2022031205160996c341642585a58deceeab4c4d8706fc.png', '$2y$10$dooxPOs5Ee9uqsPJOlLlTeWkm803AtYlT9FGdpXf8waVMVYPXFb/O'),
+(82, 'DJ SHINO', 'shino@s.com', 'ROCK', 'ロックが好きです。バンドもできます。', 'https://soundcloud.com/djshino', 'upload/2022031206061082a20c604bcd142939f1ba5aae3dd4b2.png', '$2y$10$/JJemqVbAdPWeDmc.GZlM.2QZbxkCS2tMpPCjIqGx.ujCGVJvVslK');
 
 --
 -- ダンプしたテーブルのインデックス
@@ -166,13 +157,13 @@ ALTER TABLE `like_table`
 -- テーブルの AUTO_INCREMENT `shop_table`
 --
 ALTER TABLE `shop_table`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- テーブルの AUTO_INCREMENT `users_table`
 --
 ALTER TABLE `users_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
